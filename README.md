@@ -35,6 +35,8 @@ npm start: 执行package.json中的脚本
 
 1. 导入 electron
 
+require 引入 electron 包。
+
 ### 渲染进程
 
 主进程和 OS 交互，管理状态，协调所有其他进程
@@ -47,11 +49,26 @@ electron 可以用 浏览器的属性， 也可用 node 的属性。模糊了*�
 
 html 引用 js：`src` 属性 vs `require` 模块
 
-**疑问**
+### 实现 UI
 
-在 html 里写的 scrpit 不生效。
+写 html， 类似 qt 信号槽
+
+### 跨域请求
+
+**promise**， 链式调用。
 
 ## misc
 
 ### 代理配置
 
+### 坑
+
+npm start 报错。原因可能是 node 版本太老， electron 版本太新， 重新安装 老版本 electron 后 npm start 无问题。
+
+
+**在 html 里写的 scrpit 不生效。**
+可能书中的环境是 mac。和 windows 不同。
+
+require module 不生效。
+
+书中的示例代码可能太老，函数签名有变化，需要修改。
