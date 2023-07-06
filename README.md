@@ -11,6 +11,8 @@ as the main process.
 主进程可以创建多个渲染进程。主进程负责和原生的操作系统API交互。
 主进程可以使用 `Browser-Window` 创建渲染进程，渲染进程可以加载web页面、展示GUI。可以利用chromium多进程架构。渲染进程互相隔离，不能访问操作系统 API
 
+---
+
 ## 练手
 
 ### 项目初始化
@@ -57,18 +59,67 @@ html 引用 js：`src` 属性 vs `require` 模块
 
 **promise**， 链式调用。
 
+### preload & 进程间通信
+
+*preload.js* 通过预加载脚本将需要的 API 暴露给渲染进程。
+渲染进程无法访问 node.js 接口。
+
+**进程间通信**的方式。
+
+ipcRender, ipcMain：渲染进程和主进程通信。
+
+---
+
+## 正式开发
+
+### 调试渲染进程
+
+---
+
 ## misc
 
 ### 代理配置
 
+删除代理
+
 ### 坑
 
-npm start 报错。原因可能是 node 版本太老， electron 版本太新， 重新安装 老版本 electron 后 npm start 无问题。
+1. npm start 报错。原因可能是 node 版本太老， electron 版本太新， 重新安装 老版本 electron 后 npm start 无问题。
 
 
-**在 html 里写的 scrpit 不生效。**
+2. **在 html 里写的 scrpit 不生效。**
 可能书中的环境是 mac。和 windows 不同。
 
-require module 不生效。
+3. **require module 不生效。**
+
+渲染进程不支持 require。
 
 书中的示例代码可能太老，函数签名有变化，需要修改。
+
+4. **lambda** 的坑：以下 lambda 的区别：
+
+```json
+
+map(num => num * num);
+
+map((num) => { num * num; });
+
+```
+
+一个有返回值，一个没有返回值。
+
+5. preload.js require marked报错：`Error: module not found: marked`
+
+electron 中的[进程沙盒化](https://www.electronjs.org/zh/docs/latest/tutorial/sandbox)，
+preload 只能 require 部分包。
+
+[electron module not find](https://stackoverflow.com/questions/58653223/why-does-preload-js-return-error-module-not-found)
+
+---
+
+## js 语法
+
+
+## css & html
+
+确实好用
