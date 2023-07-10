@@ -33,7 +33,7 @@ package.json 中的 scripts。
 
 npm start: 执行package.json中的脚本
 
-### 处理main process
+### main process
 
 1. 导入 electron
 
@@ -57,7 +57,7 @@ html 引用 js：`src` 属性 vs `require` 模块
 
 ### 跨域请求
 
-**promise**， 链式调用。
+**promise**， 链式调用。 fetch 访问外部链接。
 
 ### preload & 进程间通信
 
@@ -68,11 +68,20 @@ html 引用 js：`src` 属性 vs `require` 模块
 
 ipcRender, ipcMain：渲染进程和主进程通信。
 
+
+
 ---
 
 ## 正式开发
 
 ### 调试渲染进程
+
+1. 默认菜单里提供了。
+2. 代码触发 `openDevTools`
+
+### 调试主进程
+
+vscode
 
 ---
 
