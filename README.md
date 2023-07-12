@@ -57,18 +57,23 @@ html 引用 js：`src` 属性 vs `require` 模块
 
 ### 跨域请求
 
-**promise**， 链式调用。 fetch 访问外部链接。
+fetch 访问外部链接。链式调用。
+**promise**， await
 
 ### preload & 进程间通信
 
 *preload.js* 通过预加载脚本将需要的 API 暴露给渲染进程。
 渲染进程无法访问 node.js 接口。
 
-**进程间通信**的方式。
+**进程间通信**的方式：
 
 ipcRender, ipcMain：渲染进程和主进程通信。
+**remote** 模块，
+**contextBridge**模块。
 
-
+渲染进程 => 主进程：ipcRenderer.send
+渲染进程 <=> 主进程： ipcRenderer.invoke
+主进程 => 渲染进程: webContents.send
 
 ---
 
@@ -127,6 +132,8 @@ preload 只能 require 部分包。
 ---
 
 ## js 语法
+
+1. document元素的 value
 
 
 ## css & html
